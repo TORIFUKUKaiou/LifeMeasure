@@ -145,6 +145,11 @@ public class MainActivity extends Activity {
     	} else {
     		mShareButton.setEnabled(true);
     	}
+    	mShareButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				MainActivity.this.share();
+			}});
     }
     
     @Override
@@ -243,6 +248,16 @@ public class MainActivity extends Activity {
     	this.mEtoTextView.setText(etoArray[rem]);
     }
     
+    private void share() {
+    	String msg = createMessage();
+    	
+    	Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+	    intent.setType("text/plain");
+	    intent.putExtra(Intent.EXTRA_TEXT, msg);
+	    
+	    super.startActivity(Intent.createChooser(intent, "Please select..."));
+    }
+    
     private String createMessage() {
     	GregorianCalendar baseDate = new GregorianCalendar(
 				mYear,
@@ -284,12 +299,4 @@ public class MainActivity extends Activity {
 		
 		return sb.toString();*/
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
 }
