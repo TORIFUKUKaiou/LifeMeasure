@@ -1,7 +1,7 @@
 LifeMeasure
 ===========
 
-applicaion
+application
 
 https://play.google.com/store/apps/details?id=jp.torifuku.lifemeasure
 
