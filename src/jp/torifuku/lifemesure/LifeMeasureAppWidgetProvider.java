@@ -25,6 +25,6 @@ public class LifeMeasureAppWidgetProvider extends AppWidgetProvider {
 		Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
 		intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
 		PendingIntent operation = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		manager.set(AlarmManager.ELAPSED_REALTIME, (SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES), operation);
+		manager.set(AlarmManager.ELAPSED_REALTIME, (SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HOUR), operation);
 	}	
 }
