@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -152,6 +153,13 @@ public class MainActivity extends Activity {
     	if (mShowResultStarted) {
     		showResult();
     	}
+    }
+    
+    @Override
+	public void onConfigurationChanged(Configuration newConfig) {
+    	super.onConfigurationChanged(newConfig);
+    	
+    	this.setContentView();
     }
     
     @Override
