@@ -87,6 +87,7 @@ public class MainActivity extends Activity {
 				MainActivity.this.mDayOfMonth = dayOfMonth;
 				MainActivity.this.showResult();
 				MainActivity.this.showEto();
+				MainActivity.this.dataChanged();
 			}});
     	
     	/** TimePicker */
@@ -100,6 +101,7 @@ public class MainActivity extends Activity {
 				MainActivity.this.mHour = hourOfDay;
 				MainActivity.this.mMinute = minute;
 				MainActivity.this.showResult();
+				MainActivity.this.dataChanged();
 			}});
     	
     	/** Spinner */
@@ -150,6 +152,9 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				MainActivity.this.share();
 			}});
+    	
+    	/** データはかわっていないけれど、初期化のため、ここで呼び出しておく */
+    	dataChanged();
     }
     
     @Override
@@ -256,6 +261,24 @@ public class MainActivity extends Activity {
 	    intent.putExtra(Intent.EXTRA_TEXT, msg);
 	    
 	    super.startActivity(Intent.createChooser(intent, "Please select..."));
+    }
+    
+    private void dataChanged() {
+    	GregorianCalendar baseDate = new GregorianCalendar(
+				mYear,
+				mMonth,
+				mDayOfMonth,
+				mHour,
+				mMinute);
+    	GregorianCalendar now = new GregorianCalendar();
+    	int comp = now.compareTo(baseDate);
+    	boolean enabled = true;
+    	if (comp <= -1) {
+    		enabled = false;
+    	}
+    	if (mPatternSpinner != null) {
+    		mPatternSpinner.setEnabled(enabled);
+    	}
     }
     
     private String createMessage() {
