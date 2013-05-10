@@ -58,23 +58,25 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView();
         
         mUtility = new Utility();
+        this.setContentView(true);
     }
     
-    private void setContentView() {
+    private void setContentView(boolean init) {
     	super.setContentView(R.layout.activity_main);
     	
     	/** 設定値を取得 */
-    	mPref = super.getSharedPreferences(super.getPackageName(), Context.MODE_PRIVATE);
-    	mYear = mPref.getInt(KEY_YEAR, 1970);
-    	mMonth = mPref.getInt(KEY_MONTH, 0);
-    	mDayOfMonth = mPref.getInt(KEY_DAY_OF_MONTH, 1);
-    	mHour = mPref.getInt(KEY_HOUR, 0);
-    	mMinute = mPref.getInt(KEY_MINUTE, 0);
-    	mShowResultStarted = mPref.getBoolean(KEY_SAVED, false);
-    	mPattern = mPref.getInt(KEY_PATTERN, 0);
+    	if (init) {
+    		mPref = super.getSharedPreferences(super.getPackageName(), Context.MODE_PRIVATE);
+    		mYear = mPref.getInt(KEY_YEAR, 1970);
+    		mMonth = mPref.getInt(KEY_MONTH, 0);
+    		mDayOfMonth = mPref.getInt(KEY_DAY_OF_MONTH, 1);
+    		mHour = mPref.getInt(KEY_HOUR, 0);
+    		mMinute = mPref.getInt(KEY_MINUTE, 0);
+    		mShowResultStarted = mPref.getBoolean(KEY_SAVED, false);
+    		mPattern = mPref.getInt(KEY_PATTERN, 0);
+    	}
     	
     	/** DatePicker */
     	mDatePicker = (DatePicker) super.findViewById(R.id.datePicker);
@@ -154,6 +156,11 @@ public class MainActivity extends Activity {
     	
     	/** データはかわっていないけれど、初期化のため、ここで呼び出しておく */
     	dataChanged();
+    	
+    	if (mShowResultStarted) {
+    		MainActivity.this.showResult();
+			MainActivity.this.showEto();
+    	}
     }
     
     @Override
@@ -168,7 +175,7 @@ public class MainActivity extends Activity {
 	public void onConfigurationChanged(Configuration newConfig) {
     	super.onConfigurationChanged(newConfig);
     	
-    	this.setContentView();
+    	this.setContentView(false);
     }
     
     @Override
