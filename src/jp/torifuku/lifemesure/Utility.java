@@ -72,6 +72,7 @@ public class Utility {
 			 msg = context.getString(R.string.rest_widget, "" + (day*(-1)));
 		 }
 		 views.setTextViewText(R.id.widget_textView, msg);
+		 views.setTextColor(R.id.widget_textView, 0xff000000);
 
 		 /** Activity起動用のPendingIntentを設定する。 */
 		 Intent intent = new Intent(context, MainActivity.class);
