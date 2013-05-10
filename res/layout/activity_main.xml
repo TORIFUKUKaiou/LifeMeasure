@@ -49,13 +49,6 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/update_button"
-                    android:layout_width="0.0dip"
-                    android:layout_height="wrap_content"
-                    android:text="@string/update"
-                    android:layout_weight="1.0" />
-
-                <Button
                     android:id="@+id/special_day_button"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
@@ -68,6 +61,13 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/share"
+                    android:layout_weight="5.0" />
+                
+                <Button
+                    android:id="@+id/update_button"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update"
                     android:layout_weight="1.0" />
 
             </LinearLayout>
