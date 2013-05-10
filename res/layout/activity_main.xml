@@ -61,7 +61,7 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/share"
-                    android:layout_weight="5.0" />
+                    android:layout_weight="3.0" />
                 
                 <Button
                     android:id="@+id/update_button"
