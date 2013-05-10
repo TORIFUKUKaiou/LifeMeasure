@@ -15,4 +15,6 @@
     <string name="time">%1$d [Days] %2$d [Hours] %3$d [Minutes] %4$d [Seconds]</string>
     <string name="passed_dazai">%1$s has passed.</string>
     <string name="please_setting">Please setting</string>
+    <string name="elapse">Elapse:\n %1$s\n[days]</string>
+    <string name="rest_widget">rest:\n %1$s\n[days]</string>
 </resources>

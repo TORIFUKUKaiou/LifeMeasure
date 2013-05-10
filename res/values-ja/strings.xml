@@ -15,4 +15,6 @@
     <string name="time">%1$d 日と %2$d 時間 %3$d 分 %4$d 秒</string>
     <string name="passed_dazai">恥の多い生涯を%1$s送って来ました。</string>
     <string name="please_setting">設定をお願いします</string>
+    <string name="elapse">経過:\n %1$s\n[日]</string>
+    <string name="rest_widget">残り:\n %1$s\n[日]</string>
 </resources>

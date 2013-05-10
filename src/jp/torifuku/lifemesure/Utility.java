@@ -65,11 +65,13 @@ public class Utility {
 		 long diff = now.getTimeInMillis() - baseDate.getTimeInMillis();
 		 final long DAY = 1000/*1000ms->1s*/ * 60/*1s->1minute*/ * 60 /*1minute->1hour*/ * 24/*1hour->1day*/;
 		 long day = diff / DAY;
+		 String msg = null;
 		 if (day >= 0) {
-			 views.setTextViewText(R.id.widget_textView, "passed: " + day + "[days]");
+			 msg = context.getString(R.string.elapse, "" + day);
 		 } else {
-			 views.setTextViewText(R.id.widget_textView, "remind: " + (day*(-1)) + "[days]");
-		 }	 
+			 msg = context.getString(R.string.rest_widget, "" + (day*(-1)));
+		 }
+		 views.setTextViewText(R.id.widget_textView, msg);
 
 		 /** Activity起動用のPendingIntentを設定する。 */
 		 Intent intent = new Intent(context, MainActivity.class);
