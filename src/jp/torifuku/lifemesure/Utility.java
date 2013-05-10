@@ -51,34 +51,39 @@ public class Utility {
 	
 	RemoteViews createRemoteViews(Context context) {
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.layout_appwidget);
-		 SharedPreferences sp = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+		SharedPreferences sp = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
 		 
-		 int year = sp.getInt(MainActivity.KEY_YEAR, 1970);
-		 int month = sp.getInt(MainActivity.KEY_MONTH, 0);
-		 int dayOfMonth = sp.getInt(MainActivity.KEY_DAY_OF_MONTH, 1);
-		 int hourOfDay = sp.getInt(MainActivity.KEY_HOUR, 0);
-		 int minute = sp.getInt(MainActivity.KEY_MINUTE, 0);
+		int year = sp.getInt(MainActivity.KEY_YEAR, 1970);
+		int month = sp.getInt(MainActivity.KEY_MONTH, 0);
+		int dayOfMonth = sp.getInt(MainActivity.KEY_DAY_OF_MONTH, 1);
+		int hourOfDay = sp.getInt(MainActivity.KEY_HOUR, 0);
+		int minute = sp.getInt(MainActivity.KEY_MINUTE, 0);
+		boolean set = sp.getBoolean(MainActivity.KEY_SAVED, false);
 			 
-		 GregorianCalendar baseDate = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
-		 GregorianCalendar now = new GregorianCalendar();
+		GregorianCalendar baseDate = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
+		GregorianCalendar now = new GregorianCalendar();
 			 
-		 long diff = now.getTimeInMillis() - baseDate.getTimeInMillis();
-		 final long DAY = 1000/*1000ms->1s*/ * 60/*1s->1minute*/ * 60 /*1minute->1hour*/ * 24/*1hour->1day*/;
-		 long day = diff / DAY;
-		 String msg = null;
-		 if (day >= 0) {
-			 msg = context.getString(R.string.elapse, "" + day);
-		 } else {
-			 msg = context.getString(R.string.rest_widget, "" + (day*(-1)));
-		 }
-		 views.setTextViewText(R.id.widget_textView, msg);
-		 views.setTextColor(R.id.widget_textView, 0xff000000);
+		long diff = now.getTimeInMillis() - baseDate.getTimeInMillis();
+		final long DAY = 1000/*1000ms->1s*/ * 60/*1s->1minute*/ * 60 /*1minute->1hour*/ * 24/*1hour->1day*/;
+		long day = diff / DAY;
+		String msg = null;
+		if (set) {
+			if (day >= 0) {
+				msg = context.getString(R.string.elapse, "" + day);
+			} else {
+				msg = context.getString(R.string.rest_widget, "" + (day*(-1)));
+			}
+		} else {
+			msg = context.getString(R.string.please_setting);
+		}
+		views.setTextViewText(R.id.widget_textView, msg);
+		views.setTextColor(R.id.widget_textView, 0xff000000);
 
-		 /** Activity起動用のPendingIntentを設定する。 */
-		 Intent intent = new Intent(context, MainActivity.class);
-		 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-		 views.setOnClickPendingIntent(R.id.widget_ll, pendingIntent);
+		/** Activity起動用のPendingIntentを設定する。 */
+		Intent intent = new Intent(context, MainActivity.class);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+		views.setOnClickPendingIntent(R.id.widget_ll, pendingIntent);
 		 
-		 return views;
+		return views;
 	}
 }

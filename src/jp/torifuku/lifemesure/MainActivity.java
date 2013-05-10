@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 	static final String KEY_DAY_OF_MONTH = "day_of_month";
 	static final String KEY_HOUR = "hour";
 	static final String KEY_MINUTE = "minute";
-	private static final String KEY_SAVED = "saved";
+	static final String KEY_SAVED = "saved";
 	private static final String KEY_PATTERN = "pattern";
 	private int mYear;
 	private int mMonth;
