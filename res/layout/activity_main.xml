@@ -89,5 +89,5 @@
         android:layout_height="wrap_content"
         ads:adUnitId="MY_AD_UNIT_ID"
         ads:adSize="BANNER"
-        ads:loadAdOnCreate="true" />
+        ads:loadAdOnCreate="false" />
 </LinearLayout>

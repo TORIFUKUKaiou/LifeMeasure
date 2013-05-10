@@ -161,6 +161,12 @@ public class MainActivity extends Activity {
     		MainActivity.this.showResult();
 			MainActivity.this.showEto();
     	}
+    	
+    	/** 広告 */
+    	if (mShowResultStarted) {
+    		com.google.ads.AdView adView = (com.google.ads.AdView) super.findViewById(R.id.adView);
+    		adView.loadAd(new com.google.ads.AdRequest());
+    	}
     }
     
     @Override
