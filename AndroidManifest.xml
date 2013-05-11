@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize"
-            android:name="jp.torifuku.lifemesure.MainActivity"
+            android:name="jp.torifuku.lifemeasure.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         
-        <receiver android:name="jp.torifuku.lifemesure.LifeMeasureAppWidgetProvider" >
+        <receiver android:name="jp.torifuku.lifemeasure.LifeMeasureAppWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

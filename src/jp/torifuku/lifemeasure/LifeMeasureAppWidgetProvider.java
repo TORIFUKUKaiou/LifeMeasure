@@ -1,4 +1,4 @@
-package jp.torifuku.lifemesure;
+package jp.torifuku.lifemeasure;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

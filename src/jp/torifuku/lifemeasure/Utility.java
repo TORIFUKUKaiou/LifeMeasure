@@ -1,4 +1,4 @@
-package jp.torifuku.lifemesure;
+package jp.torifuku.lifemeasure;
 
 import java.util.GregorianCalendar;
 import jp.torifuku.lifemeasure.R;
