@@ -5,6 +5,7 @@ import java.util.Locale;
 import jp.torifuku.lifemeasure.R;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
@@ -54,6 +55,9 @@ public class MainActivity extends Activity {
 	private int mHour;
 	private int mMinute;
 	private int mPattern;
+	
+	private Handler mHandler = null;
+	private Runnable mRunnable = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +222,9 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		if (mHandler != null) {
+			mHandler.removeCallbacks(mRunnable);
+		}
 		if (mReceiver != null) {
 			super.unregisterReceiver(mReceiver);
 		}
@@ -255,6 +262,18 @@ public class MainActivity extends Activity {
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Intent.ACTION_TIME_TICK);
 		super.registerReceiver(mReceiver, filter);
+		
+		if (mHandler == null) {
+			mHandler = new Handler();
+			mRunnable = new Runnable() {
+				@Override
+				public void run() {
+					MainActivity.this.showResult();
+					MainActivity.this.mHandler.postDelayed(this, 500);
+				}
+			};
+			mHandler.postDelayed(mRunnable, 500);
+		}
 	}
 
 	private void showResult() {
