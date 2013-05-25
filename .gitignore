@@ -4,3 +4,5 @@
 GoogleAdMobAdsSdk*
 *.apk
 /release
+.classpath
+.DS_Store
